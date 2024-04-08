@@ -2,4 +2,4 @@
 smashdle in prolog
 
 load file using [smashdle]
-then play by typing play.
+then play by typing "play."
