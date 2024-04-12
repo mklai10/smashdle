@@ -4,6 +4,7 @@
 
 guessCount(0).
 
+% starts the game of smashdle in the GUI
 play :- 
         retractall(guessCount(_)),
         assert(guessCount(0)),
@@ -11,6 +12,7 @@ play :-
         % write(Name),
         guess(Name).
 
+% selects a random fighter name in the list
 selectFighter(Name) :- random_member(Name, [mario,donkey_kong,link,samus,dark_samus,yoshi,kirby,fox,
 pikachu,luigi,ness,captain_falcon,jigglypuff,peach,daisy,bowser,ice_climbers,sheik,dr_mario,pichu,
 falco,marth,lucina,young_link,ganondorf,mewtwo,roy,chrom,mr_game_and_watch,meta_knight,pit,dark_pit,
@@ -20,6 +22,7 @@ mii_swordfighter,mii_gunner,palutena,pac_man,robin,shulk,bowser_jr,duck_hunt,ryu
 bayonetta,inkling,ridley,king_k_rool,isabelle,incineroar,piranha_plant,joker,hero,banjo_and_kazooie,
 terry,byleth,min_min,steve,sephiroth,pyra,mythra,kazuya,sora]).
 
+% gets the user input of their guess
 guess(Answer) :- 
         new(Window, dialog('Smashdle')),
         send(Window, append, new(TextItem, text_item('Guess a character:'))),
@@ -27,6 +30,7 @@ guess(Answer) :-
         send(Window, default_button, ok),
         send(Window, open).
 
+% deals with user input if it is not a fighter in the dataset
 compareGuess(Guess, Answer) :-
         \+ fighter(Guess,_ ,_ ,_ ,_ ,_ ,_ , _),
         new(Window, dialog('Alert')),
@@ -34,6 +38,7 @@ compareGuess(Guess, Answer) :-
         send(Window, append, button(close, message(@prolog, close_not, Window, Answer))),
         send(Window, open).
 
+% deals with user input if they have guessed the correct fighter
 compareGuess(Guess, Answer) :-
         \+ dif(Guess,Answer),
         retract(guessCount(N)),
@@ -44,6 +49,7 @@ compareGuess(Guess, Answer) :-
         send(Window, append, new(_, text(Text))),
         send(Window, open).
 
+% deals with user input if they have not guessed the correct fighter
 compareGuess(Guess, Answer) :-
         dif(Guess,Answer),
         retract(guessCount(N)),
@@ -77,57 +83,70 @@ compareGuess(Guess, Answer) :-
         send(Window, background, gray),
         send(Window, open).
 
+% returns green if the strings are the same
 compareString(Guess, Answer, Color) :-
         \+ dif(Guess, Answer),
         Color = 'green'.
 
+% returns red if the strings are different
 compareString(Guess, Answer, Color) :-
         dif(Guess,Answer),
         Color = 'red'.
 
+% returns green if the lists are the same
 compareList(Guess, Answer, Color) :-
         \+ dif(Guess, Answer),
         Color = 'green'.
 
+% calls the recursive helper to compare a list
 compareList(Guess, Answer, Color) :-
         dif(Guess,Answer),
         compareListRecursive(Guess, Answer, Color).
 
+% returns orange if there is atleast one member of the list thats matching
 compareListRecursive([H1|_], Answer, Color) :-
         member(H1, Answer),
         Color = 'orange'.
 
+% recursive call for helper
 compareListRecursive([H1|T1], Answer, Color) :-
         \+ member(H1, Answer),
         compareListRecursive(T1, Answer, Color).
 
+% returns red if there are no members of the list that are matching
 compareListRecursive(Guess, _, Color) :-
         length(Guess,1),
         Color = 'red'.
 
+% returns green if the numbers are the same
 compareNumber(Guess, Answer, Color) :-
         \+ dif(Guess, Answer),
         Color = 'green'.
 
+% returns magenta if the the number is less than the answer number
 compareNumber(Guess, Answer, Color) :-
         dif(Guess, Answer),
         Guess < Answer,
         Color = 'magenta'.
 
+% returns blue if the the number is more than the answer number
 compareNumber(Guess, Answer, Color) :-
         dif(Guess, Answer),
         Guess > Answer,
         Color = 'blue'.
 
+% function to close the guess a fighter ui
 close_guess(Window, TextItem, Answer) :-
     get(TextItem, selection, Guess),
     send(Window, destroy),
     compareGuess(Guess, Answer).
 
+% function to close the guess result ui
 close_not(Window, Answer) :-
     send(Window, destroy),
     guess(Answer).
 
+% functio to create the ui window
 create_square(Window, Index, Text, Color) :-
     X is 0 + (Index) * 100,
     Y is 0,
@@ -152,9 +171,10 @@ create_square(Window, Index, Text, Color) :-
     send(TextItem, position, point(TextX, TextY)),
     send(Window, display, Picture, point(X, Y)).
 
-
+% function to concat lists
 concat_list([H|T], Result) :-
     atomic_list_concat([H|T], ', ', Result).
 
+% function to concat lists
 concat_list(List, Result) :-
     List = Result.

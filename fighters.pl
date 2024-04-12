@@ -1,3 +1,5 @@
+% dataset of fighters in smashdle, (name,gender,species,universe,weight,first appearance, platform of origin, origin date)
+
 fighter(mario, male, [human], mario, 98, [ssb_64], [arcade], 1981).
 fighter(donkey_kong, male, [kong], donkey_kong, 127, [ssb_64], [arcade], 1981).
 fighter(link, male, [human], the_legend_of_zelda, 104, [ssb_64], [nes], 1986).
