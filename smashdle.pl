@@ -6,7 +6,7 @@ play :-
         retractall(guessCount(_)),
         assert(guessCount(0)),
         selectFighter(Name),
-        write(Name),
+        % write(Name),
         guess(Name).
 
 selectFighter(Name) :- random_member(Name, [mario,donkey_kong,link,samus,dark_samus,yoshi,kirby,fox,
@@ -17,8 +17,6 @@ rob,toon_link,wolf,villager,mega_man,wii_fit_trainer,rosalina_and_luna,little_ma
 mii_swordfighter,mii_gunner,palutena,pac_man,robin,shulk,bowser_jr,duck_hunt,ryu,ken,cloud,corrin,
 bayonetta,inkling,ridley,king_k_rool,isabelle,incineroar,piranha_plant,joker,hero,banjo_and_kazooie,
 terry,byleth,min_min,steve,sephiroth,pyra,mythra,kazuya,sora]).
-
-% selectFighter(Name) :- random_member(Name, [snake]).
 
 guess(Fighter) :- 
         nl,

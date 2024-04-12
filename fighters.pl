@@ -42,7 +42,7 @@ fighter(sonic, male, [hedgehog], sonic_the_hedgehog, 86, [ssb_brawl], [sega_gene
 fighter(king_dedede, male, [bird], kirby, 127, [ssb_brawl], [gameboy], 1992).
 fighter(olimar, male, [hocotatian], pikmin, 79, [ssb_brawl], [gamecube], 2001).
 fighter(lucario, other, [pokemon], pokemon, 92, [ssb_brawl], [nintendo_ds], 2005).
-fighter(rob, male, [robot], rob, 106, [ssb_brawl], [nes], 1985).                                              % idk how to do r.o.b 
+fighter(r_o_b, male, [robot], rob, 106, [ssb_brawl], [nes], 1985).
 fighter(toon_link, male, [human], the_legend_of_zelda, 91, [ssb_brawl], [gamecube], 2002).
 fighter(wolf, male, [wolf], star_fox, 92, [ssb_brawl], [nintendo_64], 1997).
 fighter(villager, selectable, [human], animal_crossing, 92, [ssb_3ds, wii_u], [nintendo_64], 2001).
@@ -79,7 +79,7 @@ fighter(banjo_and_kazooie, other, [bear,bird], banjo-kazooie, 106, [ssb_ultimate
 fighter(terry, male, [human], the_king_of_fighters, 108, [ssb_ultimate], [arcade], 1991).
 fighter(byleth, selectable, [god,human], fire_emblem, 97, [ssb_ultimate], [android,ios,nintendo_switch], 2019).
 fighter(min_min, female, [augmented,human], arms, 104, [ssb_ultimate], [nintendo_switch], 2017).
-fighter(steve, selectable, [human], minecraft, 92, [ssb_ultimate], [computer], 2009).                           % not sure about this one with alex
+fighter(steve, selectable, [human], minecraft, 92, [ssb_ultimate], [computer], 2009).
 fighter(sephiroth, male, [human,jenova], final_fantasy, 79, [ssb_ultimate], [playstation], 1997).
 fighter(pyra, female, [blade,human], xenoblade, 98, [ssb_ultimate], [nintendo_switch], 2017).
 fighter(mythra, female, [blade,human], xenoblade, 98, [ssb_ultimate], [nintendo_switch], 2017).
