@@ -112,13 +112,11 @@ compareNumber(Guess, Answer, Color) :-
 compareNumber(Guess, Answer, Color) :-
         dif(Guess, Answer),
         Guess < Answer,
-        % write('More, '),
         Color = 'magenta'.
 
 compareNumber(Guess, Answer, Color) :-
         dif(Guess, Answer),
         Guess > Answer,
-        % write('Less, '),
         Color = 'blue'.
 
 close_guess(Window, TextItem, Answer) :-
